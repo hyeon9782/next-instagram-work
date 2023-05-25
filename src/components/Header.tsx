@@ -7,6 +7,7 @@ import SearchIcon from './ui/icons/SearchIcon';
 import SearchFillIcon from './ui/icons/SearchFillIcon';
 import NewIcon from './ui/icons/NewIcon';
 import NewFillIcon from './ui/icons/NewFillIcon';
+import ColorButton from './ui/ColorButton';
 
 const menu = [
     {
@@ -29,15 +30,22 @@ export default function Header() {
     const pathName = usePathname();
     
   return (
-    <header className='flex sticky justify-between'>
-        <Link href='/'>Instagram</Link>
-        <nav className='flex'>
-            {menu.map(item => <li key={item.href}>
-                <Link href={item.href}>
-                    {pathName === item.href ? item.clickedIcon : item.icon}
-                </Link>
-            </li>)}
-        </nav>
+    <header className='sticky top-0 bg-white z-10 border-b'>
+        <div className='flex justify-between items-center px-6'>
+            <Link href='/' className='text-3xl font-bold'>Instagram</Link>
+            <nav>
+                <ul className='flex gap-4 items-center p-4'>
+                    {menu.map(item => (
+                        <li key={item.href}>
+                            <Link href={item.href}>
+                                {pathName === item.href ? item.clickedIcon : item.icon}
+                            </Link>
+                        </li>
+                    ))}
+                    <ColorButton text='Sign in' onClick={() => {}}/>
+                </ul>
+            </nav>
+        </div>
     </header>
   )
 }
