@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import './globals.css'
+import AuthContext from '@/context/AuthContext'
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='w-full max-w-screen-xl overflow-auto mx-auto'>
-        <Header />
-        <section>{children}</section>
+        <AuthContext>
+          <Header />
+          <section>{children}</section>
+        </AuthContext>
       </body>
     </html>
   )
